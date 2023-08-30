@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductList.css';
 import {Link} from 'react-router-dom';
 
-function ProductList() {
+function ProductList({ addToCart }) {
   var products = [
     {
       id: '1',
@@ -24,6 +24,7 @@ function ProductList() {
     },
   ];
 
+
   return (
     <div>
       <h2>Product List</h2>
@@ -34,6 +35,7 @@ function ProductList() {
             <p className="product-price">Price: ${product.price}</p>
             <p>{product.details}</p>
             <Link to={`/productdetail/${index}`}>View Details</Link>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </li>
         ))}
       </ul>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-function ProductDetail() {
+function ProductDetail({ addToCart }) {
   var products = [
     {
       name: 'Product 1',
@@ -23,12 +23,15 @@ function ProductDetail() {
     const { productId } = useParams();
     const product = products[productId];
 
+
   return (
     <div>
       <h2>{product.name}</h2>
       <p>Price: ${product.price}</p>
       <p>{product.details}</p>
-      <button onClick={() => alert('Added to cart')}>Add to Cart</button>
+      <button onClick={() => addToCart(product)}>Add to Cart</button>
+
+      <Link to="/cart">Cart</Link>
     </div>
   );
 }
